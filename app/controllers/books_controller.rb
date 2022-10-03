@@ -7,7 +7,7 @@ class BooksController < ApplicationController
   def create
     @book = Book.new(book_params)
      if @book.save
-       redirect_to books_path
+       #redirect_to books_path
      else
        render :new
      end
@@ -15,10 +15,17 @@ class BooksController < ApplicationController
 
   def index
     @books = Book.all
+    #@book = Book.new
+    #@book.save
+    redirect_to books_path
+     #else
+      #render :index
+      #@books = Book.all
+     #end
   end
 
   def book_params
-    params.require(:book).permit(title, :body)
+    params.require(:book).permit(:title, :body)
   end
 
 end
